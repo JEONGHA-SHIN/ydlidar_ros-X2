@@ -153,8 +153,9 @@ int main(int argc, char * argv[]) {
                 index = (point.angle - scan.config.min_angle ) / scan_msg.angle_increment + 0.5;
                 if(index >=0 && index < fixed_size) {
                     if(point.range == 0.0) {
-                        scan_msg.ranges[index] = std::numeric_limits<float>::infinity();
-                        scan_msg.intensities[index] = 0;
+                        //scan_msg.ranges[index] = std::numeric_limits<float>::infinity();
+                        scan_msg.ranges[index] = point.range;
+                        scan_msg.intensities[index] = point.intensity;
                     } else {
                         scan_msg.ranges[index] = point.range;
                         scan_msg.intensities[index] = point.intensity;
